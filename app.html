@@ -1,0 +1,45 @@
+<!DOCTYPE HTML>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <title>LXEDの.desktopファイルを作成</title>
+  <link rel="stylesheet" href="./app.css" />
+</head>
+<body>
+  <ul>
+    <li>
+      Exec:<span class="setting_value" data-bind="text: exec"></span>
+    </li>
+    <li>
+      Icon:<span class="setting_value" data-bind="text: icon"></span>
+    </li>
+    <li>
+      Type:<span class="setting_value"><input type="text" data-bind="text: type" /></span>
+    </li>
+    <li>
+      Terminal:<span class="setting_value"><input type="checkbox" data-bind="checked: terminal" /></span>
+    </li>
+    <li>
+      Name:<span class="setting_value"><input type="text" data-bind="text: name" /></span>
+    </li>
+    <li>
+      GenericName:<span class="setting_value"><input type="text" data-bind="text: genericName" /></span>
+    </li>
+    <li>
+      StartupNotify:<span class="setting_value"><input type="checkbox" data-bind="checked: startupNotify" /></span>
+    </li>
+    <li>
+      Categories:
+    </li>
+    <ul data-bind="foreach: categories">
+      <li>
+        <span data-bind="text: name" class="category_name"></span>
+        <span class="category_checkbox setting_value"><input type="checkbox" data-bind="checked: selected" /></span>
+      </li>
+    </ul>
+  </ul>
+
+  <script type="text/javascript" src="knockout-2.2.1.js"></script>
+  <script type="text/javascript" src="./app.js"></script>
+</body>
+</html>
