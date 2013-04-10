@@ -5,13 +5,13 @@ CategoryViewModel = (name, selected = false) ->
 
 DesktopFileViewModel = ->
   @encoding = 'UTF-8'
-  @exec = ''
-  @icon = ''
-  @type = 'Application'
-  @terminal = false
-  @name = ''
-  @genericName = ''
-  @startupNotify = false
+  @exec = ko.observable ''
+  @icon = ko.observable ''
+  @type = ko.observable 'Application'
+  @terminal = ko.observable false
+  @name = ko.observable ''
+  @genericName = ko.observable ''
+  @startupNotify = ko.observable false
   @categories = [
     new CategoryViewModel 'AudioVideo'
     new CategoryViewModel 'Audio'
@@ -28,4 +28,6 @@ DesktopFileViewModel = ->
   ]
   @
 
-ko.applyBindings new DesktopFileViewModel()
+exports = this
+exports.viewModel = new DesktopFileViewModel()
+ko.applyBindings exports.viewModel
