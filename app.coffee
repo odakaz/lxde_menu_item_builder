@@ -26,6 +26,29 @@ DesktopFileViewModel = ->
     new CategoryViewModel 'System'
     new CategoryViewModel 'Utility'
   ]
+
+  @selectedCategoriesAsString = ->
+    res = "";
+    for c in @categories
+      res = res + "#{c.name};" if c.selected()
+    res
+
+  @desktopFileContent = ko.computed ->
+    content = """
+              [Desktop Entry]
+              Encoding=#{@encoding}
+              Exec=#{@exec()}
+              Icon=#{@icon()}
+              Type=#{@type()}
+              Terminal=#{@terminal()}
+              Name=#{@name()}
+              GenericName=#{@genericName()}
+              StartupNotify=#{@startupNotify()}
+              Categories=#{@selectedCategoriesAsString()}
+              """
+    content
+  , @
+
   @
 
 exports = this
