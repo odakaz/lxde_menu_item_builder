@@ -6,40 +6,49 @@
   <link rel="stylesheet" href="./app.css" />
 </head>
 <body>
-  <ul>
-    <li>
-      Exec:<span class="setting_value"><input type="text" data-bind="value: exec, valueUpdate: 'afterkeydown'" /></span>
-    </li>
-    <li>
-      Icon:<span class="setting_value"><input type="text" data-bind="value: icon, valueUpdate: 'afterkeydown'" /></span>
-    </li>
-    <li>
-      Type:<span class="setting_value"><input type="text" data-bind="value: type, valueUpdate: 'afterkeydown'" /></span>
-    </li>
-    <li>
-      Terminal:<span class="setting_value"><input type="checkbox" data-bind="checked: terminal" /></span>
-    </li>
-    <li>
-      Name:<span class="setting_value"><input type="text" data-bind="value: name, valueUpdate: 'afterkeydown'" /></span>
-    </li>
-    <li>
-      GenericName:<span class="setting_value"><input type="text" data-bind="value: genericName, valueUpdate: 'afterkeydown'" /></span>
-    </li>
-    <li>
-      StartupNotify:<span class="setting_value"><input type="checkbox" data-bind="checked: startupNotify" /></span>
-    </li>
-    <li>
-      Categories:
-    </li>
-    <ul data-bind="foreach: categories">
-      <li>
-        <span data-bind="text: name" class="category_name"></span>
-        <span class="category_checkbox setting_value"><input type="checkbox" data-bind="checked: selected" /></span>
-      </li>
-    </ul>
-  </ul>
+  <div id="setting">
+    <div class="setting_field">
+      <label class="setting_name">Exec:</label>
+      <span class="setting_value"><input type="text" data-bind="value: exec, valueUpdate: 'afterkeydown'" /></span>
+    </div>
+    <div class="setting_field">
+      <label class="setting_name">Icon:</label>
+      <span class="setting_value"><input type="text" data-bind="value: icon, valueUpdate: 'afterkeydown'" /></span>
+    </div>
+    <div class="setting_field">
+      <label class="setting_name">Type:</label>
+      <span class="setting_value"><input type="text" data-bind="value: type, valueUpdate: 'afterkeydown'" /></span>
+    </div>
+    <div class="setting_field">
+      <label class="setting_name">Terminal:</label>
+      <span class="setting_value"><input type="checkbox" data-bind="checked: terminal" /></span>
+    </div>
+    <div class="setting_field">
+      <label class="setting_name">Name:</label>
+      <span class="setting_value"><input type="text" data-bind="value: name, valueUpdate: 'afterkeydown'" /></span>
+    </div>
+    <div class="setting_field">
+      <label class="setting_name">GenericName:</label>
+      <span class="setting_value"><input type="text" data-bind="value: genericName, valueUpdate: 'afterkeydown'" /></span>
+    </div>
+    <div class="setting_field">
+      <label class="setting_name">StartupNotify:</label>
+      <span class="setting_value"><input type="checkbox" data-bind="checked: startupNotify" /></span>
+    </div>
+    <div class="setting_field">
+      <label class="setting_name">Categories:</label>
+      <ul id="categories_list" data-bind="foreach: categories">
+        <li>
+          <label data-bind="text: name" class="category_name"></label>
+          <span class="category_checkbox setting_value"><input type="checkbox" data-bind="checked: selected" /></span>
+        </li>
+      </ul>
+    </div>
+  </div>
 
-  <pre data-bind="text: desktopFileContent"></pre>
+  <div id="desktopfile_content">
+    <pre data-bind="text: desktopFileContent"></pre>
+  </div>
 
   <script type="text/javascript" src="knockout-2.2.1.js"></script>
   <script type="text/javascript" src="./app.js"></script>
