@@ -28,19 +28,7 @@ span.setting_value {
   clear : both;
 }
 
+
 #desktopfile_content {
-  border: solid;
-  border-width: 1px;
-
-  padding-left: 10px;
-  padding-right: 10px;
-
   float: left;
-  width: 500px;
-}
-
-pre {
-    white-space: pre-wrap;
-    word-wrap: break-word;
-    overflow: auto;
 }

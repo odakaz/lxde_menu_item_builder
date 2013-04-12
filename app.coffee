@@ -27,11 +27,19 @@ DesktopFileViewModel = ->
     new CategoryViewModel 'Utility'
   ]
 
+  @blob
+
   @selectedCategoriesAsString = ->
     res = "";
     for c in @categories
       res = res + "#{c.name};" if c.selected()
     res
+
+  @updateDownloadLink = (content) ->
+    @blob = new Blob [content], {type: "text/plain"}
+    a = document.getElementById 'download_link'
+    a.setAttribute 'href', window.URL.createObjectURL @blob
+    @
 
   @desktopFileContent = ko.computed ->
     content = """
@@ -46,6 +54,7 @@ DesktopFileViewModel = ->
               StartupNotify=#{@startupNotify()}
               Categories=#{@selectedCategoriesAsString()}
               """
+    @updateDownloadLink content
     content
   , @
 

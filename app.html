@@ -46,9 +46,10 @@
     </div>
   </div>
 
-  <div id="desktopfile_content">
-    <pre data-bind="text: desktopFileContent"></pre>
-  </div>
+  <textarea id="desktopfile_content" rows="20" cols="60" data-bind="value: desktopFileContent">
+  </textarea>
+
+  <a href="#" id="download_link">ダウンロード</a>
 
   <script type="text/javascript" src="knockout-2.2.1.js"></script>
   <script type="text/javascript" src="./app.js"></script>
