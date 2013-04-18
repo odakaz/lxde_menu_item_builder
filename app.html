@@ -3,17 +3,13 @@
 <head>
   <meta charset="UTF-8">
   <title>LXEDの.desktopファイルを作成</title>
-  <link rel="stylesheet" href="./app.css" />
+  <link rel="stylesheet" href="css/app.css" />
 </head>
 <body>
   <div id="setting">
-    <div class="setting_field">
-      <label class="setting_name">Exec:</label>
-      <span class="setting_value"><input type="text" data-bind="value: exec, valueUpdate: 'afterkeydown'" /></span>
+    <div class="setting_field" data-bind="template: {name: execTemplateName}">
     </div>
-    <div class="setting_field">
-      <label class="setting_name">Icon:</label>
-      <span class="setting_value"><input type="text" data-bind="value: icon, valueUpdate: 'afterkeydown'" /></span>
+    <div class="setting_field" data-bind="template: {name: iconTemplateName}">
     </div>
     <div class="setting_field">
       <label class="setting_name">Type:</label>
@@ -51,7 +47,28 @@
 
   <a href="#" id="download_link">ダウンロード</a>
 
-  <script type="text/javascript" src="knockout-2.2.1.js"></script>
-  <script type="text/javascript" src="./app.js"></script>
+  <!-- templates -->
+  <script id="default_exec_template" type="text/html">
+    <label class="setting_name">Exec:</label>
+    <span class="setting_value"><input type="text" data-bind="value: exec, valueUpdate: 'afterkeydown'" /></span>
+  </script>
+
+  <script id="default_icon_template" type="text/html">
+    <label class="setting_name">Icon:</label>
+    <span class="setting_value"><input type="text" data-bind="value: icon, valueUpdate: 'afterkeydown'" /></span>
+  </script>
+
+  <script id="firefox_exec_template" type="text/html">
+    <label class="setting_name">Exec:</label>
+    <span class="setting_value"><input type="file" data-bind="event: {change: onChangeExec}" /></span>
+  </script>
+
+  <script id="firefox_icon_template" type="text/html">
+    <label class="setting_name">Icon:</label>
+    <span class="setting_value"><input type="file" data-bind="event: {change: onChangeIcon}" /></span>
+  </script>
+
+  <script type="text/javascript" src="scripts/knockout-2.2.1.js"></script>
+  <script type="text/javascript" src="scripts/app.js"></script>
 </body>
 </html>

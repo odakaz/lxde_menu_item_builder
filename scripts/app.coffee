@@ -3,7 +3,7 @@ class CategoryViewModel
     @name = name
     @selected = ko.observable selected
 
-class DesktopFileViewModel
+class ViewModel
   constructor: ->
     @encoding = 'UTF-8'
     @exec = ko.observable ''
@@ -27,6 +27,12 @@ class DesktopFileViewModel
       new CategoryViewModel 'System'
       new CategoryViewModel 'Utility'
     ]
+
+    @execTemplateName = ->
+      "default_exec_template"
+
+    @iconTemplateName = ->
+      "default_icon_template"
 
     @blob
 
@@ -59,8 +65,36 @@ class DesktopFileViewModel
       content
     , @
 
-    @
+class FirefoxViewModel extends ViewModel
+  constructor: ->
+    super
+    @execTemplateName = ->
+      "firefox_exec_template"
+
+    @iconTemplateName = ->
+      "firefox_icon_template"
+
+    @getFullPath = (files) ->
+      if files? and files.length < 1
+        return ""
+
+      console.log files[0].mozFullPath
+      files[0].mozFullPath
+
+    @onChangeExec = (data, event) ->
+      @exec @getFullPath event.target.files
+      @
+
+    @onChangeIcon = (data, event) ->
+      @icon @getFullPath event.target.files
+      @
+
+buildViewModel = ->
+  if window.navigator.userAgent.match /^Mozilla.*Firefox/
+    new FirefoxViewModel()
+  else
+    new ViewModel()
 
 exports = this
-exports.viewModel = new DesktopFileViewModel()
+exports.viewModel = buildViewModel()
 ko.applyBindings exports.viewModel

@@ -1,4 +1,4 @@
 geanyproject
-app.js
-app.map
-knockout*.debug.js
+scripts/app.js
+scripts/app.map
+scripts/knockout*.debug.js
